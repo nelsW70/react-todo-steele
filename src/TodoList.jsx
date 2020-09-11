@@ -10,15 +10,27 @@ export class TodoList extends Component {
     };
 
     this.create = this.create.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   create(newTodo) {
     this.setState({ todos: [...this.state.todos, newTodo] });
   }
 
+  remove(id) {
+    this.setState({
+      todos: this.state.todos.filter(t => t.id != id)
+    });
+  }
+
   render() {
     const todos = this.state.todos.map(todo => (
-      <Todo key={todo.id} task={todo.task} />
+      <Todo
+        key={todo.id}
+        id={todo.id}
+        task={todo.task}
+        removeTodo={this.remove}
+      />
     ));
     return (
       <div>
