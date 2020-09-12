@@ -31,7 +31,7 @@ export class NewTodoForm extends Component {
           value={this.state.task}
           onChange={this.handleChange}
         />
-        <button>Add Todo</button>
+        <button disabled={!this.state.task}>Add Todo</button>
       </form>
     );
   }
